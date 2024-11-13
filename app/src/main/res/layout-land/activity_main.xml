@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#EFCFA5"
+    tools:context=".MainActivity">
+
+    <!--Separo la pagina  a la mitad-->
+    <!--Habilito el uso de la calculadora en el checkBox-->
+
+
+    <CheckBox
+
+        android:id="@+id/checkEdicion"
+        android:layout_width="189dp"
+        android:layout_height="54dp"
+        android:checked="true"
+        android:text="Habilitar calculadora"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintHorizontal_bias="0.44"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.736" />
+
+    <TextView
+        android:id="@+id/resultado"
+        android:layout_width="296dp"
+        android:layout_height="120dp"
+        android:background="#EDC288"
+        android:paddingBottom="20sp"
+        android:text="0"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintHorizontal_bias="0.457"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.178"
+        tools:ignore="TextSizeCheck" />
+
+    <TableLayout
+        android:layout_width="307dp"
+        android:layout_height="308dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        tools:ignore="ExtraText,MissingConstraints,TextSizeCheck"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/tableLayout">
+
+        <TableLayout
+            android:id="@+id/tablaBotones"
+            android:layout_width="378dp"
+            android:layout_height="match_parent">
+
+            <TableRow
+                android:id="@+id/fila1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/button7"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#0A246B"
+                    android:text="7"
+                    android:textSize="16sp"
+                    app:iconSize="50dp" />
+
+                <Button
+                    android:id="@+id/button8"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#0A246B"
+                    android:text="8"
+                    android:textSize="16sp"
+                    app:iconSize="50dp" />
+
+                <Button
+                    android:id="@+id/button9"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#0A246B"
+                    android:text="9"
+                    android:textSize="16sp"
+                    app:iconSize="50dp" />
+
+                <Button
+                    android:id="@+id/buttonAC"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#686FEB"
+                    android:text="AC"
+                    android:textSize="16sp"
+                    app:iconSize="50dp"
+                    tools:ignore="TextContrastCheck" />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/fila2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/button4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#0A246B"
+                    android:text="4"
+                    android:textSize="16sp"
+                    app:iconSize="50dp" />
+
+                <Button
+                    android:id="@+id/button5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#0A246B"
+                    android:text="5"
+                    android:textSize="16sp"
+                    app:iconSize="50dp" />
+
+                <Button
+                    android:id="@+id/button6"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#0A246B"
+                    android:text="6"
+                    android:textSize="16sp"
+                    app:iconSize="50dp" />
+
+                <Button
+                    android:id="@+id/buttonMultiplicar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#686FEB"
+                    android:text="*"
+                    android:textSize="16sp"
+                    app:iconSize="50dp" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/fila3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/button1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#0A246B"
+                    android:text="1"
+                    android:textSize="16sp"
+                    app:iconSize="50dp" />
+
+                <Button
+                    android:id="@+id/button2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#0A246B"
+                    android:text="2"
+                    android:textSize="16sp"
+                    app:iconSize="50dp" />
+
+                <Button
+                    android:id="@+id/button3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#0A246B"
+                    android:text="3"
+                    android:textSize="16sp"
+                    app:iconSize="50dp" />
+
+                <Button
+                    android:id="@+id/buttonDividir"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#686FEB"
+                    android:text="/"
+                    android:textSize="16sp"
+                    app:iconSize="50dp" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/fila4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/buttonRestar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#686FEB"
+                    android:text="-"
+                    android:textSize="16sp"
+                    app:iconSize="50dp" />
+
+                <Button
+                    android:id="@+id/button0"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#0A246B"
+                    android:text="0"
+                    android:textSize="16sp"
+                    app:iconSize="50dp" />
+
+                <Button
+                    android:id="@+id/buttonSumar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#686FEB"
+                    android:text="+"
+                    android:textSize="16sp"
+                    app:iconSize="50dp" />
+
+                <Button
+                    android:id="@+id/buttonComa"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#686FEB"
+                    android:text=","
+                    android:textSize="16sp"
+                    app:iconSize="50dp" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/fila5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/buttonPi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#686FEB"
+                    android:text="π"
+                    android:textSize="16sp"
+                    app:iconSize="50dp" />
+
+                <Button
+                    android:id="@+id/buttonCuadrado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#686FEB"
+                    android:text="xʸ"
+                    android:textSize="16sp"
+                    app:iconSize="50dp" />
+
+                <Button
+                    android:id="@+id/buttonPorcentaje"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#686FEB"
+                    android:text="%"
+                    android:textSize="16sp"
+                    app:iconSize="50dp" />
+
+                <Button
+                    android:id="@+id/buttonRaiz"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#686FEB"
+                    android:text="√"
+                    android:textSize="16sp"
+                    app:iconSize="50dp" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/fila6"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/buttonIgual"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="#9B9797"
+                    android:text="="
+                    android:textSize="16sp"
+                    app:iconSize="50dp"
+                    tools:ignore="VisualLintButtonSize" />
+
+
+            </TableRow>
+
+        </TableLayout>
+    </TableLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/guideline"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
