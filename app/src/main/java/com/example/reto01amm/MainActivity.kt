@@ -4,12 +4,15 @@ import android.content.res.Configuration
 import android.os.Bundle
 import android.view.View
 import android.view.View.OnClickListener
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.CompoundButton
+import android.widget.TableRow
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.children
 import com.example.reto01amm.databinding.ActivityMainBinding
 import com.google.android.material.snackbar.Snackbar
 import kotlin.math.pow
@@ -55,6 +58,7 @@ class MainActivity : AppCompatActivity(), OnClickListener, CompoundButton.OnChec
         binding.buttonCuadrado.setOnClickListener(this)
         binding.buttonPorcentaje.setOnClickListener(this)
         binding.buttonIgual.setOnClickListener(this)
+        binding.buttonComa.setOnClickListener(this)
 
         //Podria ser nulo porque solo aparece en el landscape
         binding.checkEdicion?.setOnCheckedChangeListener(this)
@@ -65,7 +69,16 @@ class MainActivity : AppCompatActivity(), OnClickListener, CompoundButton.OnChec
     private fun visualizar(vista: View) {
         val boton = vista as Button
         val textoBoton = boton.text.toString()
+        if(vista == binding.buttonComa){
+            if(numVista.isEmpty()){
+                numVista += "0,"
+            }
+            if(!numVista.contains(",")){
+                numVista += textoBoton;
+            }
+        }else{
         numVista += textoBoton // Concateno el número
+            }
         binding.resultado.text = numVista // Muestro el número que he concatenado
     }
 
@@ -82,34 +95,41 @@ class MainActivity : AppCompatActivity(), OnClickListener, CompoundButton.OnChec
 
             binding.buttonSumar.id -> {
                 operacion = "+" // Almaceno el símbolo
-                operando1 = numVista.toDouble() // Convierto el número a Double y lo guardo
+                operando1 = numVista.replace(",", ".").toDouble() // Convierto el número a Double y lo guardo
                 numVista = "" // Vacío para el siguiente operando
                 binding.resultado.text = "" // Limpio la pantalla
             }
 
             binding.buttonRestar.id -> {
                 operacion = "-"
-                operando1 = numVista.toDouble()
+                operando1 = numVista.replace(",", ".").toDouble()
                 numVista = ""
                 binding.resultado.text = ""
             }
 
             binding.buttonMultiplicar.id -> {
                 operacion = "*"
-                operando1 = numVista.toDouble()
+                operando1 = numVista.replace(",", ".").toDouble()
                 numVista = ""
                 binding.resultado.text = ""
             }
 
             binding.buttonDividir.id -> {
                 operacion = "/"
-                operando1 = numVista.toDouble()
+                operando1 = numVista.replace(",", ".").toDouble()
+                numVista = ""
+                binding.resultado.text = ""
+            }
+
+            binding.buttonDividir.id -> {
+                operacion = "."
+                operando1 = numVista.replace(",", ".").toDouble()
                 numVista = ""
                 binding.resultado.text = ""
             }
 
             binding.buttonIgual.id -> {
-                operando2 = numVista.toDouble() // Convierto el operando 2 a Double
+                operando2 = numVista.replace(",", ".").toDouble() // Convierto el operando 2 a Double
                 calcular() // Llamo a la función calcular
                 //Añado una notificacion
                 Snackbar.make(
@@ -126,14 +146,14 @@ class MainActivity : AppCompatActivity(), OnClickListener, CompoundButton.OnChec
             }
 
             binding.buttonRaiz.id -> {
-                operando1 = numVista.toDouble()
+                operando1 = numVista.replace(",", ".").toDouble()
                 val resultado = sqrt(operando1)
                 numVista = resultado.toString()
                 binding.resultado.text = numVista
             }
 
             binding.buttonPorcentaje.id -> {
-                operando1 = numVista.toDouble()
+                operando1 = numVista.replace(",", ".").toDouble()
                 val resultado = operando1 / 100
                 numVista = resultado.toString()
                 binding.resultado.text = numVista
@@ -145,7 +165,7 @@ class MainActivity : AppCompatActivity(), OnClickListener, CompoundButton.OnChec
             }
 
             binding.buttonCuadrado.id -> {
-                operando1 = numVista.toDouble()
+                operando1 = numVista.replace(",", ".").toDouble()
                 val resultado = operando1.pow(2.0)
                 numVista = resultado.toString()
                 binding.resultado.text = numVista
@@ -163,7 +183,7 @@ class MainActivity : AppCompatActivity(), OnClickListener, CompoundButton.OnChec
             else -> 0.0
         }
 
-        binding.resultado.text = resultado.toString() // Muestro el resultado en pantalla
+        binding.resultado.text = resultado.toString().replace(".", ",") // Muestro el resultado en pantalla
         numVista = resultado.toString() // Actualizo numVista para siguientes operaciones
     }
 
@@ -172,9 +192,20 @@ class MainActivity : AppCompatActivity(), OnClickListener, CompoundButton.OnChec
         when (buttonView?.id) {
             binding.checkEdicion?.id -> {
                 if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-                    binding.checkEdicion?.isEnabled = isChecked
+                    deshabilitarBotones(isChecked)
                 }
             }
         }
+    }
+
+    private fun deshabilitarBotones(checked: Boolean) {
+        val filas = binding.tablaBotones.children
+        for(fila in filas){
+            val botones = (fila as TableRow).children
+            for(boton in botones) {
+                boton.isEnabled = checked
+            }
+        }
+
     }
 }
